@@ -41,18 +41,28 @@ export async function find(id: string) {
   }
 }
 type typeData = {
+  // name  String
+  // email String @unique
+  // password String
+  // age Int @default(16)
+  // address String
+  // phone String?
   name: string;
   email: string;
+  password: string;
+  phone: string;
+  address?: string;
+  age: number;
 };
 export async function create(datat: typeData) {
   try {
     const user = await prisma.user.create({
       data: datat,
     });
-    return user;
+    return { user, message: "T" };
   } catch (error) {
     console.log(error);
-    return error;
+    return { error, message: "F" };
   }
 }
 export async function update(datat: typeData, id: string) {

@@ -14,7 +14,11 @@ model User {
   id    String @id @default(uuid())
   name  String
   email String @unique
-  UserRole Role @default(USER)
+  password String 
+  age Int @default(16)
+  address String?
+  phone String? 
+  userRole Role @default(USER)
 }
 
 enum Role{
